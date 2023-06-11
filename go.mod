@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/alecthomas/chroma/v2 v2.7.0
-	github.com/aws/aws-sdk-go v1.44.277
+	github.com/aws/aws-sdk-go v1.44.280
 	github.com/fsnotify/fsnotify v1.6.0
 	github.com/inconshreveable/mousetrap v1.1.0
 	github.com/jackc/pgx/v5 v5.3.1
