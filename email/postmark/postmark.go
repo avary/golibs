@@ -12,6 +12,7 @@ import (
 // Mailer implements the `email.Mailer` interface to send emails using postmarkapp.com's API
 // https://postmarkapp.com/developer/api/overview
 type Mailer struct {
+	accountApiToken             string
 	serverApiToken              string
 	postmarkClient              *postmark.Client
 	messageStreamBroadcast      string
@@ -19,15 +20,17 @@ type Mailer struct {
 }
 
 type Config struct {
-	ServerApiToken string
-	HttpClient     *http.Client
+	AccountApiToken string
+	ServerApiToken  string
+	HttpClient      *http.Client
 }
 
 // NewMailer returns a new smtp Mailer
 func NewMailer(config Config) *Mailer {
-	postmarkClient := postmark.NewClient("", config.HttpClient)
+	postmarkClient := postmark.NewClient(config.AccountApiToken, config.HttpClient)
 
 	return &Mailer{
+		accountApiToken:             config.AccountApiToken,
 		serverApiToken:              config.ServerApiToken,
 		postmarkClient:              postmarkClient,
 		messageStreamBroadcast:      "broadcast",
