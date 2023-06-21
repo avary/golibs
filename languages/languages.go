@@ -3,6 +3,7 @@ package languages
 import (
 	_ "embed"
 	"encoding/json"
+	"fmt"
 )
 
 //go:embed languages.json
@@ -16,17 +17,17 @@ type Language struct {
 
 var langs map[string]Language
 
-func Get() (map[string]Language, error) {
+func Get() map[string]Language {
 	var err error
 
 	if langs == nil {
 		langs = map[string]Language{}
 		err = json.Unmarshal(Bytes, &langs)
 		if err != nil {
-
-			return langs, err
+			err = fmt.Errorf("languages: parsing languages JSON file: %w", err)
+			panic(err)
 		}
 	}
 
-	return langs, nil
+	return langs
 }
