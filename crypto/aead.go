@@ -81,7 +81,7 @@ func Encrypt(key, plaintext, additionalData []byte) (ciphertext []byte, err erro
 	return
 }
 
-// DecryptWithNonce is an helper function to symetrically  decrypt a piece of data using AES-256-GCM
+// DecryptWithNonce is an helper function to symetrically decrypt a piece of data using AES-256-GCM
 // The nonce should be at the begining of the ciphertext
 func Decrypt(key, ciphertext, additionalData []byte) (plaintext []byte, err error) {
 	cipher, err := NewAEAD(key)
