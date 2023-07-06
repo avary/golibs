@@ -1,33 +1,33 @@
 /*
-gowatch is a very simple compile daemon for Go.
-gowatch watches your .go files in a directory and invokes `go build`
+watchgod is a very simple compile daemon for Go.
+watchgod watches your .go files in a directory and invokes `go build`
 if a file changes.
 Examples
 In its simplest form, the defaults will do. With the current working directory set
 to the source directory you can simply…
 
-	$ gowatch
+	$ watchgod
 
 … and it will recompile your code whenever you save a source file.
 If you want it to also run your program each time it builds you might add…
 
-	$ gowatch -command="./MyProgram -my-options"
+	$ watchgod -command="./MyProgram -my-options"
 
 … and it will also keep a copy of your program running. Killing the old one and
 starting a new one each time you build. For advanced usage you can also supply
 the changed file to the command by doing…
 
-	$ gowatch -command="./MyProgram -my-options %[1]s"
+	$ watchgod -command="./MyProgram -my-options %[1]s"
 
 …but note that this will not be set on the first start.
 You may find that you need to exclude some directories and files from
 monitoring, such as a .git repository or emacs temporary files…
 
-	$ gowatch -exclude-dir=.git -exclude=".#*"
+	$ watchgod -exclude-dir=.git -exclude=".#*"
 
 If you want to monitor files other than .go and .c files you might…
 
-	$ gowatch -include=Makefile -include="*.less" -include="*.tmpl"
+	$ watchgod -include=Makefile -include="*.less" -include="*.tmpl"
 
 Options
 There are command line options.
