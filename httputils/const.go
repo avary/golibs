@@ -15,6 +15,7 @@ const (
 	HeaderAuthorization           = "Authorization"
 	HeaderAltSvc                  = "Alt-Svc"
 	HeaderStrictTransportSecurity = "Strict-Transport-Security"
+	HeaderContentDisposition      = "Content-Disposition"
 )
 
 const (
