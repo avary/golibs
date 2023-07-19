@@ -162,7 +162,7 @@ func (pgqueue *PostgreSQLQueue) Pull(ctx context.Context, numberOfJobs int64) ([
 	WHERE id IN (
 		SELECT id
 		FROM queue
-		WHERE status = $3 AND scheduled_for <= $4 AND failed_attempts < queue.retry_max
+		WHERE status = $3 AND scheduled_for <= $4 AND failed_attempts <= queue.retry_max
 		ORDER BY scheduled_for
 		FOR UPDATE SKIP LOCKED
 		LIMIT $5
